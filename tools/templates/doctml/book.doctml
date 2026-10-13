@@ -1,0 +1,52 @@
+<document>
+
+    <p-style id="Normal" name="Normal">
+        <font face="Arial" size="11pt" />
+    </p-style>
+
+    <p-style id="FooterParagraph" name="Footer Paragraph" align="right" border="0.1mm single black 2mm, none, none, none">
+        <font face="Arial" size="10pt" />
+    </p-style>
+
+    <p-style id="BookText" name="Book Text" line-spacing="at-least 1.4" spacing="2mm 2mm" align="justify" indent="0mm 0mm 7mm">
+        <font face="Arial" />
+    </p-style>
+
+    <p-style id="Heading1" name="Heading 1" based-on="Normal" spacing="3mm 10mm" outline="1">
+        <font face="Arial" size="18pt" bold="true" />
+    </p-style>
+
+    <section size="A5" margin="18mm 15mm 22mm" />
+
+    <footer></footer>
+
+    <img src="<%- meta.cover %>" width="148mm" height="210mm" horizontal="page 0mm" vertical="page 0mm" />
+
+    <page-break />
+
+    <group p.align="center" p.spacing="10mm" p.widow-control="yes">
+    <p align="center" font.size="34pt"><%- meta.title %></p>
+    <p align="center" font.size="24pt"><%- meta.subtitle %></p>
+    <p align="center" font.size="14pt"><%- meta.subtitle2 %></p>
+    <p align="center" font.size="24pt"></p>
+    <p align="center" font.size="24pt"><%- meta.author %></p>
+    </group>
+
+    <section size="A5" margin="18mm 15mm 22mm" />
+
+    <footer>
+        <p style="FooterParagraph"><page-number/></p>
+    </footer>
+
+    <h1>Spis treści</h1>
+
+    <p>TODO: Spis treści zostanie wygenerowany automatycznie.</p>
+
+    <% for (chapter of chapters) { %>
+        <page-break />
+        <group p.style="BookText">
+        <%= mdastToDocTML(chapter.root, externalFiles, true) %>
+        </group>
+    <% } %>
+
+</document>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid"
+    xml:lang="<%- meta.language %>">
+
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:identifier id="bookid">urn:uuid:<%- meta.bookid %></dc:identifier>
+        <dc:title><%- meta.title %> - <%- meta.subtitle %>: <%- meta.subtitle2 %></dc:title>
+        <dc:creator><%- meta.author %></dc:creator>
+        <dc:language><%- meta.language %></dc:language>
+        <meta property="dcterms:modified"><%- version.isoTime %></meta>
+        <meta name="cover" content="cover-image" />
+    </metadata>
+
+    <manifest>
+        <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml"
+            properties="nav" />
+        <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" />
+        <item id="style" href="style.css" media-type="text/css" />
+        <item id="cover-page" href="cover.xhtml" media-type="application/xhtml+xml" />
+        <item id="cover-image" href="<%- meta.cover %>" media-type="image/png"
+            properties="cover-image" />
+        <% for (let chapter of chapters) { %>
+        <item id="chapter<%- chapter.id %>" href="chapter<%- chapter.id %>.xhtml" media-type="application/xhtml+xml" />
+        <% } %>
+    </manifest>
+
+    <spine toc="ncx">
+        <itemref idref="cover-page" linear="no" />
+        <% for (let chapter of chapters) { %>
+        <itemref idref="chapter<%- chapter.id %>" />
+        <% } %>
+    </spine>
+</package>

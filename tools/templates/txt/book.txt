@@ -1,0 +1,8 @@
+
+<%= meta.title %>
+<%= meta.subtitle %>
+<%= meta.subtitle2 %>
+
+<%= meta.author %>
+
+<% for (chapter of chapters) { %><%= mdastToPlainText(chapter.root) %><% } %>
