@@ -14,7 +14,7 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "index.js",
+  "main": "src/convert.ts",
   "scripts": {
     "build": "npx tsx ./tools/convert.ts"
   },

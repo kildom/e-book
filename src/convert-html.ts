@@ -11,6 +11,8 @@ export function mdastToHtml(node: mdast.Root | mdast.RootContent, externalFiles:
             return `<p>${node.children.map(child => mdastToHtml(child, externalFiles, xhtml)).join('')}</p>\n`;
         case 'text':
             return node.value;
+        case 'thematicBreak':
+            return xhtml ? '<hr />' : '<hr>';
         case 'strong':
             return `<strong>${node.children.map(child => mdastToHtml(child, externalFiles, xhtml)).join('')}</strong>`;
         case 'emphasis':

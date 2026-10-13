@@ -70,6 +70,8 @@ export function mdastToPlainText(node: mdast.Root | mdast.RootContent): string {
         }
         case 'text':
             return node.value.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        case 'thematicBreak':
+            return '-'.repeat(lineWidth) + '\n\n';
         case 'strong':
         case 'emphasis':
             return node.children.map(child => mdastToPlainText(child)).join('');

@@ -25,6 +25,9 @@ export function mdastToDocTML(node: mdast.Root | mdast.RootContent, externalFile
             case 'paragraph':
                 useNbsp = false;
                 return `<p>${node.children.map(child => convert(child, externalFiles)).join('')}</p>\n`;
+            case 'thematicBreak':
+                // TODO: thematicBreak in DocTML
+                return '<p>--------- TODO: thematicBreak</p>\n'
             case 'text':
                 return convertText(node.value);
             case 'strong':

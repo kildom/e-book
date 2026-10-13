@@ -29,6 +29,7 @@ export function mdastStats(node: mdast.Root | mdast.RootContent, inputStats?: Bo
                 stats.words += node.value.split(/[\r\n\t ]+/).length;
                 stats.sentences += node.value.split(/[.!?]+/).filter(x => x.trim()).length;
                 break;
+            case 'thematicBreak':
             case 'strong':
             case 'emphasis':
                 break;
